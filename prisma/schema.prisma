@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model RawNews {
+  id          String             @id
+  title       String
+  summary     String
+  content     String
+  sourceName  String
+  sourceType  String
+  sourceUrl   String
+  publishedAt DateTime
+  language    String
+  region      String
+  collectedAt DateTime           @default(now())
+  insight     StructuredInsight?
+}
+
+model StructuredInsight {
+  id                String   @id
+  rawNewsId         String   @unique
+  eventType         String
+  primaryTheme      String
+  secondaryThemes   Json
+  companies         Json
+  keywords          Json
+  sentimentLabel    String
+  sentimentScore    Float
+  impactScore       Int
+  confidenceScore   Float
+  riskTags          Json
+  opportunityTags   Json
+  structuredSummary String
+  impactAnalysis    String
+  clusterKey        String
+  reasoning         Json
+  rawNews           RawNews  @relation(fields: [rawNewsId], references: [id], onDelete: Cascade)
+}
+
+model DailyReport {
+  id                String   @id
+  reportDate        String   @unique
+  title             String
+  overview          String
+  summary           Json
+  hotTopics         Json
+  deepDives         Json
+  trendSignals      Json
+  riskAlerts        Json
+  opportunityAlerts Json
+  chartPayload      Json
+  methodology       Json
+  promptCatalog     Json
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

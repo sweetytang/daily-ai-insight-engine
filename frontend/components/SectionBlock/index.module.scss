@@ -1,0 +1,35 @@
+.section {
+  padding: 30px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 22px 54px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.header {
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+
+.title {
+  margin: 12px 0 10px;
+  font-size: 28px;
+  line-height: 1.15;
+  color: #102a43;
+}
+
+.description {
+  margin: 0;
+  max-width: 720px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #52606d;
+}

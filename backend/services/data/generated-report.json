@@ -1,0 +1,1081 @@
+{
+  "reportDate": "2026-04-17",
+  "generatedAt": "2026-04-17T08:57:52.050Z",
+  "title": "AI 舆情分析日报 - 2026-04-17",
+  "overview": "本期系统共处理 15 条近期 AI 相关新闻，其中官方来源 11 条、媒体来源 4 条。热点主要集中在 模型能力、算力基础设施、资本动向 三个方向，说明当前行业主线是“头部资本与算力继续集中、多模态模型持续升级、行业落地与安全治理同步推进”。",
+  "summary": {
+    "totalNews": 15,
+    "officialCount": 11,
+    "mediaCount": 4,
+    "highImpactCount": 15,
+    "averageImpactScore": 94
+  },
+  "hotTopics": [
+    {
+      "id": "insight-anthropic-compute-2026-04-06",
+      "title": "Anthropic expands partnership with Google and Broadcom for multiple gigawatts of next-generation compute",
+      "reason": "Anthropic 的 官方渠道样本，影响分 98，主题聚焦 算力基础设施。",
+      "impactScore": 98,
+      "sourceName": "Anthropic",
+      "publishedAt": "2026-04-06T00:00:00.000Z",
+      "primaryTheme": "算力基础设施",
+      "sentimentLabel": "positive",
+      "companies": [
+        "Anthropic",
+        "Google",
+        "Broadcom"
+      ]
+    },
+    {
+      "id": "insight-openai-funding-2026-03-31",
+      "title": "OpenAI raises $122 billion to accelerate the next phase of AI",
+      "reason": "OpenAI 的 官方渠道样本，影响分 98，主题聚焦 算力基础设施。",
+      "impactScore": 98,
+      "sourceName": "OpenAI",
+      "publishedAt": "2026-03-31T00:00:00.000Z",
+      "primaryTheme": "算力基础设施",
+      "sentimentLabel": "positive",
+      "companies": [
+        "OpenAI"
+      ]
+    },
+    {
+      "id": "insight-deepmind-gemma4-2026-04",
+      "title": "Gemma 4: Byte for byte, the most capable open models",
+      "reason": "Google DeepMind 的 官方渠道样本，影响分 98，主题聚焦 模型能力。",
+      "impactScore": 98,
+      "sourceName": "Google DeepMind",
+      "publishedAt": "2026-04-02T00:00:00.000Z",
+      "primaryTheme": "模型能力",
+      "sentimentLabel": "positive",
+      "companies": [
+        "Google DeepMind",
+        "Google"
+      ]
+    },
+    {
+      "id": "insight-deepmind-flash-audio-2026-03-26",
+      "title": "Gemini 3.1 Flash Audio (Flash Live, TTS)",
+      "reason": "Google DeepMind 的 官方渠道样本，影响分 98，主题聚焦 多模态。",
+      "impactScore": 98,
+      "sourceName": "Google DeepMind",
+      "publishedAt": "2026-03-26T00:00:00.000Z",
+      "primaryTheme": "多模态",
+      "sentimentLabel": "neutral",
+      "companies": [
+        "Google DeepMind",
+        "Google"
+      ]
+    },
+    {
+      "id": "insight-deepmind-flash-lite-2026-03-03",
+      "title": "Gemini 3.1 Flash-Lite",
+      "reason": "Google DeepMind 的 官方渠道样本，影响分 98，主题聚焦 模型能力。",
+      "impactScore": 98,
+      "sourceName": "Google DeepMind",
+      "publishedAt": "2026-03-03T00:00:00.000Z",
+      "primaryTheme": "模型能力",
+      "sentimentLabel": "positive",
+      "companies": [
+        "Google DeepMind",
+        "Google"
+      ]
+    }
+  ],
+  "deepDives": [
+    {
+      "title": "Anthropic expands partnership with Google and Broadcom for multiple gigawatts of next-generation compute",
+      "background": "Anthropic、Google、Broadcom 相关的 算力基础设施 事件，核心主题落在“算力基础设施”。新闻重点是 Anthropic 宣布与 Google 和 Broadcom 扩大合作，为 Claude 前沿模型锁定更多下一代 TPU 算力，因此可归入 算力基础设施 的高关注样本。",
+      "impact": "Anthropic 把竞争重心继续推向长期算力锁定，说明前沿模型厂商的护城河正在从参数和产品扩展到基础设施承诺。",
+      "recommendation": "建议重点跟踪：算力平台与云服务需求提升。"
+    },
+    {
+      "title": "OpenAI raises $122 billion to accelerate the next phase of AI",
+      "background": "OpenAI 相关的 融资事件 事件，核心主题落在“算力基础设施”。新闻重点是 OpenAI 完成 1220 亿美元融资，强调消费者、企业、开发者和算力之间的飞轮，因此可归入 算力基础设施 的高关注样本。",
+      "impact": "OpenAI 把竞争重心继续推向长期算力锁定，说明前沿模型厂商的护城河正在从参数和产品扩展到基础设施承诺。",
+      "recommendation": "建议重点跟踪：算力平台与云服务需求提升。"
+    },
+    {
+      "title": "Gemma 4: Byte for byte, the most capable open models",
+      "background": "Google DeepMind、Google 相关的 模型发布 事件，核心主题落在“模型能力”。新闻重点是 Google DeepMind 推出 Gemma 4，强调智能密度和 agentic workflow 适配能力，因此可归入 模型能力 的高关注样本。",
+      "impact": "Google DeepMind 释放出的信号是：AI 竞争正在从单点模型能力，转向模型、产品、资本和生态联动的系统竞赛。",
+      "recommendation": "建议重点跟踪：多模态应用创新加速。"
+    }
+  ],
+  "trendSignals": [
+    {
+      "title": "算力与资本继续向头部集中",
+      "detail": "OpenAI 与 Anthropic 的融资和算力承诺同时升温，说明行业竞争门槛正快速抬高。",
+      "level": "high"
+    },
+    {
+      "title": "模型竞争从文本转向多模态与部署效率",
+      "detail": "GPT-5.4、Gemma 4、Gemini Flash Audio/Flash-Lite 指向同一个方向：能力、成本和交互模态需要同时优化。",
+      "level": "medium"
+    },
+    {
+      "title": "企业级 Agent 正向行业工作流深入",
+      "detail": "Anthropic 与 Infosys 的合作说明受监管行业已开始要求可治理、可交付的行业级 AI 方案。",
+      "level": "medium"
+    },
+    {
+      "title": "安全治理从配角变成主线投资",
+      "detail": "OpenAI Safety Fellowship 与 Anthropic Institute 都在扩展外部研究网络，安全投入正在制度化。",
+      "level": "medium"
+    }
+  ],
+  "riskAlerts": [
+    {
+      "title": "基础设施集中度上升",
+      "detail": "多吉瓦级算力协议意味着头部公司对供应链和资本的占用会继续扩大，中小团队的进入门槛同步变高。",
+      "level": "high"
+    },
+    {
+      "title": "资本情绪开始分化",
+      "detail": "媒体报道已出现对 OpenAI 和 Anthropic 相对估值的重新比较，说明舆情不再只看技术领先，还开始看回报与兑现。",
+      "level": "medium"
+    },
+    {
+      "title": "模型退役会带来迁移成本",
+      "detail": "旧模型退役说明平台治理节奏加快，依赖特定模型风格的用户和企业需要更主动地做兼容适配。",
+      "level": "medium"
+    }
+  ],
+  "opportunityAlerts": [
+    {
+      "title": "行业 Agent 集成商有明确窗口",
+      "detail": "电信、金融、制造等场景正在需要既懂模型又懂交付的解决方案商。",
+      "level": "high"
+    },
+    {
+      "title": "安全评测与合规工具链值得跟踪",
+      "detail": "随着安全投入制度化，评测、审计、数据治理和滥用防控工具会逐步标准化。",
+      "level": "medium"
+    }
+  ],
+  "charts": {
+    "themeDistribution": [
+      {
+        "label": "模型能力",
+        "value": 6,
+        "tone": "warning"
+      },
+      {
+        "label": "算力基础设施",
+        "value": 3,
+        "tone": "warning"
+      },
+      {
+        "label": "资本动向",
+        "value": 2,
+        "tone": "warning"
+      },
+      {
+        "label": "多模态",
+        "value": 1,
+        "tone": "warning"
+      },
+      {
+        "label": "企业落地",
+        "value": 1,
+        "tone": "warning"
+      },
+      {
+        "label": "安全治理",
+        "value": 1,
+        "tone": "warning"
+      },
+      {
+        "label": "世界模型",
+        "value": 1,
+        "tone": "positive"
+      }
+    ],
+    "sourceDistribution": [
+      {
+        "label": "官方渠道",
+        "value": 11,
+        "tone": "neutral"
+      },
+      {
+        "label": "媒体报道",
+        "value": 4,
+        "tone": "neutral"
+      }
+    ],
+    "sentimentDistribution": [
+      {
+        "label": "偏正向",
+        "value": 8,
+        "tone": "neutral"
+      },
+      {
+        "label": "中性",
+        "value": 5,
+        "tone": "neutral"
+      },
+      {
+        "label": "需关注",
+        "value": 2,
+        "tone": "neutral"
+      }
+    ],
+    "entityDistribution": [
+      {
+        "label": "Anthropic",
+        "value": 573,
+        "tone": "warning"
+      },
+      {
+        "label": "Google",
+        "value": 490,
+        "tone": "warning"
+      },
+      {
+        "label": "OpenAI",
+        "value": 465,
+        "tone": "warning"
+      },
+      {
+        "label": "Google DeepMind",
+        "value": 294,
+        "tone": "warning"
+      },
+      {
+        "label": "Broadcom",
+        "value": 196,
+        "tone": "warning"
+      },
+      {
+        "label": "Infosys",
+        "value": 97,
+        "tone": "positive"
+      }
+    ]
+  },
+  "structuredInsights": [
+    {
+      "id": "insight-anthropic-compute-2026-04-06",
+      "rawNewsId": "anthropic-compute-2026-04-06",
+      "title": "Anthropic expands partnership with Google and Broadcom for multiple gigawatts of next-generation compute",
+      "sourceName": "Anthropic",
+      "sourceType": "official",
+      "sourceUrl": "https://www.anthropic.com/news/google-broadcom-partnership-compute",
+      "publishedAt": "2026-04-06T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "infrastructure",
+      "primaryTheme": "infrastructure",
+      "secondaryThemes": [
+        "enterprise",
+        "multimodal"
+      ],
+      "companies": [
+        "Anthropic",
+        "Google",
+        "Broadcom"
+      ],
+      "keywords": [
+        "anthropic",
+        "claude",
+        "google",
+        "broadcom",
+        "compute"
+      ],
+      "sentimentLabel": "positive",
+      "sentimentScore": 0.48,
+      "impactScore": 98,
+      "confidenceScore": 0.93,
+      "riskTags": [
+        "算力供给向头部集中",
+        "资本开支持续抬升"
+      ],
+      "opportunityTags": [
+        "算力平台与云服务需求提升"
+      ],
+      "structuredSummary": "Anthropic、Google、Broadcom 相关的 算力基础设施 事件，核心主题落在“算力基础设施”。新闻重点是 Anthropic 宣布与 Google 和 Broadcom 扩大合作，为 Claude 前沿模型锁定更多下一代 TPU 算力，因此可归入 算力基础设施 的高关注样本。",
+      "impactAnalysis": "Anthropic 把竞争重心继续推向长期算力锁定，说明前沿模型厂商的护城河正在从参数和产品扩展到基础设施承诺。",
+      "clusterKey": "infrastructure:Anthropic",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "算力基础设施",
+        "matchedCompanies": [
+          "Anthropic",
+          "Google",
+          "Broadcom"
+        ],
+        "matchedKeywords": [
+          "anthropic",
+          "claude",
+          "google",
+          "broadcom",
+          "compute"
+        ]
+      }
+    },
+    {
+      "id": "insight-openai-funding-2026-03-31",
+      "rawNewsId": "openai-funding-2026-03-31",
+      "title": "OpenAI raises $122 billion to accelerate the next phase of AI",
+      "sourceName": "OpenAI",
+      "sourceType": "official",
+      "sourceUrl": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "publishedAt": "2026-03-31T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "funding",
+      "primaryTheme": "infrastructure",
+      "secondaryThemes": [
+        "capital",
+        "model",
+        "enterprise"
+      ],
+      "companies": [
+        "OpenAI"
+      ],
+      "keywords": [
+        "openai",
+        "chatgpt",
+        "基础设施",
+        "算力",
+        "融资"
+      ],
+      "sentimentLabel": "positive",
+      "sentimentScore": 0.48,
+      "impactScore": 98,
+      "confidenceScore": 0.93,
+      "riskTags": [
+        "算力供给向头部集中",
+        "资本开支持续抬升",
+        "高估值带来执行压力"
+      ],
+      "opportunityTags": [
+        "算力平台与云服务需求提升"
+      ],
+      "structuredSummary": "OpenAI 相关的 融资事件 事件，核心主题落在“算力基础设施”。新闻重点是 OpenAI 完成 1220 亿美元融资，强调消费者、企业、开发者和算力之间的飞轮，因此可归入 算力基础设施 的高关注样本。",
+      "impactAnalysis": "OpenAI 把竞争重心继续推向长期算力锁定，说明前沿模型厂商的护城河正在从参数和产品扩展到基础设施承诺。",
+      "clusterKey": "infrastructure:OpenAI",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "算力基础设施",
+        "matchedCompanies": [
+          "OpenAI"
+        ],
+        "matchedKeywords": [
+          "openai",
+          "chatgpt",
+          "基础设施",
+          "算力",
+          "融资"
+        ]
+      }
+    },
+    {
+      "id": "insight-deepmind-gemma4-2026-04",
+      "rawNewsId": "deepmind-gemma4-2026-04",
+      "title": "Gemma 4: Byte for byte, the most capable open models",
+      "sourceName": "Google DeepMind",
+      "sourceType": "official",
+      "sourceUrl": "https://deepmind.google/models/gemma/gemma-4/",
+      "publishedAt": "2026-04-02T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "model_release",
+      "primaryTheme": "model",
+      "secondaryThemes": [
+        "open_source"
+      ],
+      "companies": [
+        "Google DeepMind",
+        "Google"
+      ],
+      "keywords": [
+        "google deepmind",
+        "deepmind",
+        "gemma",
+        "google",
+        "model"
+      ],
+      "sentimentLabel": "positive",
+      "sentimentScore": 0.48,
+      "impactScore": 98,
+      "confidenceScore": 0.93,
+      "riskTags": [],
+      "opportunityTags": [
+        "多模态应用创新加速"
+      ],
+      "structuredSummary": "Google DeepMind、Google 相关的 模型发布 事件，核心主题落在“模型能力”。新闻重点是 Google DeepMind 推出 Gemma 4，强调智能密度和 agentic workflow 适配能力，因此可归入 模型能力 的高关注样本。",
+      "impactAnalysis": "Google DeepMind 释放出的信号是：AI 竞争正在从单点模型能力，转向模型、产品、资本和生态联动的系统竞赛。",
+      "clusterKey": "model:Google DeepMind",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "模型能力",
+        "matchedCompanies": [
+          "Google DeepMind",
+          "Google"
+        ],
+        "matchedKeywords": [
+          "google deepmind",
+          "deepmind",
+          "gemma",
+          "google",
+          "model"
+        ]
+      }
+    },
+    {
+      "id": "insight-deepmind-flash-audio-2026-03-26",
+      "rawNewsId": "deepmind-flash-audio-2026-03-26",
+      "title": "Gemini 3.1 Flash Audio (Flash Live, TTS)",
+      "sourceName": "Google DeepMind",
+      "sourceType": "official",
+      "sourceUrl": "https://deepmind.google/models/model-cards/gemini-3-1-flash-audio/",
+      "publishedAt": "2026-03-26T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "model_release",
+      "primaryTheme": "multimodal",
+      "secondaryThemes": [
+        "model",
+        "content_ai"
+      ],
+      "companies": [
+        "Google DeepMind",
+        "Google"
+      ],
+      "keywords": [
+        "google deepmind",
+        "deepmind",
+        "gemini",
+        "google",
+        "audio"
+      ],
+      "sentimentLabel": "neutral",
+      "sentimentScore": 0.12,
+      "impactScore": 98,
+      "confidenceScore": 0.93,
+      "riskTags": [],
+      "opportunityTags": [
+        "多模态应用创新加速",
+        "世界模型与具身智能新场景"
+      ],
+      "structuredSummary": "Google DeepMind、Google 相关的 模型发布 事件，核心主题落在“多模态”。新闻重点是 Google DeepMind 更新 Gemini 3.1 Flash Audio，覆盖实时音频和 TTS 场景，因此可归入 多模态 的高关注样本。",
+      "impactAnalysis": "Google DeepMind 释放出的信号是：AI 竞争正在从单点模型能力，转向模型、产品、资本和生态联动的系统竞赛。",
+      "clusterKey": "multimodal:Google DeepMind",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "多模态",
+        "matchedCompanies": [
+          "Google DeepMind",
+          "Google"
+        ],
+        "matchedKeywords": [
+          "google deepmind",
+          "deepmind",
+          "gemini",
+          "google",
+          "audio"
+        ]
+      }
+    },
+    {
+      "id": "insight-deepmind-flash-lite-2026-03-03",
+      "rawNewsId": "deepmind-flash-lite-2026-03-03",
+      "title": "Gemini 3.1 Flash-Lite",
+      "sourceName": "Google DeepMind",
+      "sourceType": "official",
+      "sourceUrl": "https://deepmind.google/models/model-cards/gemini-3-1-flash-lite/",
+      "publishedAt": "2026-03-03T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "model_release",
+      "primaryTheme": "model",
+      "secondaryThemes": [],
+      "companies": [
+        "Google DeepMind",
+        "Google"
+      ],
+      "keywords": [
+        "google deepmind",
+        "deepmind",
+        "gemini",
+        "google",
+        "发布"
+      ],
+      "sentimentLabel": "positive",
+      "sentimentScore": 0.48,
+      "impactScore": 98,
+      "confidenceScore": 0.93,
+      "riskTags": [],
+      "opportunityTags": [
+        "多模态应用创新加速"
+      ],
+      "structuredSummary": "Google DeepMind、Google 相关的 模型发布 事件，核心主题落在“模型能力”。新闻重点是 Google DeepMind 推出 Gemini 3.1 Flash-Lite，主打高吞吐、低成本和可选推理强度，因此可归入 模型能力 的高关注样本。",
+      "impactAnalysis": "Google DeepMind 释放出的信号是：AI 竞争正在从单点模型能力，转向模型、产品、资本和生态联动的系统竞赛。",
+      "clusterKey": "model:Google DeepMind",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "模型能力",
+        "matchedCompanies": [
+          "Google DeepMind",
+          "Google"
+        ],
+        "matchedKeywords": [
+          "google deepmind",
+          "deepmind",
+          "gemini",
+          "google",
+          "发布"
+        ]
+      }
+    },
+    {
+      "id": "insight-techcrunch-anthropic-compute-2026-04-07",
+      "rawNewsId": "techcrunch-anthropic-compute-2026-04-07",
+      "title": "Anthropic ups compute deal with Google and Broadcom amid skyrocketing demand",
+      "sourceName": "TechCrunch",
+      "sourceType": "media",
+      "sourceUrl": "https://techcrunch.com/2026/04/07/anthropic-compute-deal-google-broadcom-tpus/",
+      "publishedAt": "2026-04-07T00:00:00.000Z",
+      "language": "en",
+      "region": "us",
+      "eventType": "infrastructure",
+      "primaryTheme": "infrastructure",
+      "secondaryThemes": [
+        "enterprise"
+      ],
+      "companies": [
+        "Anthropic",
+        "Google",
+        "Broadcom"
+      ],
+      "keywords": [
+        "anthropic",
+        "google",
+        "broadcom",
+        "compute",
+        "基础设施"
+      ],
+      "sentimentLabel": "neutral",
+      "sentimentScore": 0.12,
+      "impactScore": 98,
+      "confidenceScore": 0.8300000000000001,
+      "riskTags": [
+        "算力供给向头部集中",
+        "资本开支持续抬升"
+      ],
+      "opportunityTags": [
+        "算力平台与云服务需求提升"
+      ],
+      "structuredSummary": "Anthropic、Google、Broadcom 相关的 算力基础设施 事件，核心主题落在“算力基础设施”。新闻重点是 TechCrunch 从媒体视角解读 Anthropic 扩大算力协议，强调客户需求和长期产能锁定，因此可归入 算力基础设施 的高关注样本。",
+      "impactAnalysis": "Anthropic 把竞争重心继续推向长期算力锁定，说明前沿模型厂商的护城河正在从参数和产品扩展到基础设施承诺。",
+      "clusterKey": "infrastructure:Anthropic",
+      "reasoning": {
+        "sourceWeight": 18,
+        "themeLabel": "算力基础设施",
+        "matchedCompanies": [
+          "Anthropic",
+          "Google",
+          "Broadcom"
+        ],
+        "matchedKeywords": [
+          "anthropic",
+          "google",
+          "broadcom",
+          "compute",
+          "基础设施"
+        ]
+      }
+    },
+    {
+      "id": "insight-techcrunch-anthropic-vs-openai-2026-04-14",
+      "rawNewsId": "techcrunch-anthropic-vs-openai-2026-04-14",
+      "title": "Anthropic’s rise is giving some OpenAI investors second thoughts",
+      "sourceName": "TechCrunch",
+      "sourceType": "media",
+      "sourceUrl": "https://techcrunch.com/2026/04/14/anthropics-rise-is-giving-some-openai-investors-second-thoughts/",
+      "publishedAt": "2026-04-14T00:00:00.000Z",
+      "language": "en",
+      "region": "us",
+      "eventType": "ecosystem",
+      "primaryTheme": "model",
+      "secondaryThemes": [],
+      "companies": [
+        "OpenAI",
+        "Anthropic"
+      ],
+      "keywords": [
+        "openai",
+        "anthropic"
+      ],
+      "sentimentLabel": "watch",
+      "sentimentScore": -0.25,
+      "impactScore": 98,
+      "confidenceScore": 0.8,
+      "riskTags": [],
+      "opportunityTags": [
+        "多模态应用创新加速"
+      ],
+      "structuredSummary": "OpenAI、Anthropic 相关的 生态变化 事件，核心主题落在“模型能力”。新闻重点是 TechCrunch 援引金融时报观点，指出部分投资人开始重新比较 Anthropic 与 OpenAI 的估值和增长逻辑，因此可归入 模型能力 的高关注样本。",
+      "impactAnalysis": "OpenAI 释放出的信号是：AI 竞争正在从单点模型能力，转向模型、产品、资本和生态联动的系统竞赛。",
+      "clusterKey": "model:OpenAI",
+      "reasoning": {
+        "sourceWeight": 18,
+        "themeLabel": "模型能力",
+        "matchedCompanies": [
+          "OpenAI",
+          "Anthropic"
+        ],
+        "matchedKeywords": [
+          "openai",
+          "anthropic"
+        ]
+      }
+    },
+    {
+      "id": "insight-anthropic-infosys-2026-02-17",
+      "rawNewsId": "anthropic-infosys-2026-02-17",
+      "title": "Anthropic and Infosys collaborate to build AI agents for telecommunications and other regulated industries",
+      "sourceName": "Anthropic",
+      "sourceType": "official",
+      "sourceUrl": "https://www.anthropic.com/news/anthropic-infosys",
+      "publishedAt": "2026-02-17T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "partnership",
+      "primaryTheme": "enterprise",
+      "secondaryThemes": [
+        "safety"
+      ],
+      "companies": [
+        "Anthropic",
+        "Infosys"
+      ],
+      "keywords": [
+        "anthropic",
+        "claude",
+        "infosys",
+        "regulated industries",
+        "telecommunications"
+      ],
+      "sentimentLabel": "neutral",
+      "sentimentScore": 0.12,
+      "impactScore": 97,
+      "confidenceScore": 0.93,
+      "riskTags": [
+        "行业交付复杂度上升"
+      ],
+      "opportunityTags": [
+        "行业 Agent 落地提速"
+      ],
+      "structuredSummary": "Anthropic、Infosys 相关的 合作落地 事件，核心主题落在“企业落地”。新闻重点是 Anthropic 与 Infosys 合作，将 Claude 与行业交付体系结合，面向电信、金融、制造等受监管行业，因此可归入 企业落地 的高关注样本。",
+      "impactAnalysis": "Anthropic 的动作说明行业客户不再只采购模型 API，而是希望采购一整套可治理、可交付的行业 Agent 解决方案。",
+      "clusterKey": "enterprise:Anthropic",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "企业落地",
+        "matchedCompanies": [
+          "Anthropic",
+          "Infosys"
+        ],
+        "matchedKeywords": [
+          "anthropic",
+          "claude",
+          "infosys",
+          "regulated industries",
+          "telecommunications"
+        ]
+      }
+    },
+    {
+      "id": "insight-openai-gpt54-2026-03-05",
+      "rawNewsId": "openai-gpt54-2026-03-05",
+      "title": "Introducing GPT-5.4",
+      "sourceName": "OpenAI",
+      "sourceType": "official",
+      "sourceUrl": "https://openai.com/index/introducing-gpt-5-4/",
+      "publishedAt": "2026-03-05T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "model_release",
+      "primaryTheme": "model",
+      "secondaryThemes": [
+        "enterprise"
+      ],
+      "companies": [
+        "OpenAI"
+      ],
+      "keywords": [
+        "openai",
+        "chatgpt",
+        "gpt 5.4",
+        "codex",
+        "发布"
+      ],
+      "sentimentLabel": "positive",
+      "sentimentScore": 0.48,
+      "impactScore": 92,
+      "confidenceScore": 0.93,
+      "riskTags": [],
+      "opportunityTags": [
+        "多模态应用创新加速"
+      ],
+      "structuredSummary": "OpenAI 相关的 模型发布 事件，核心主题落在“模型能力”。新闻重点是 OpenAI 发布 GPT-5.4 与 GPT-5.4 Pro，强化专业工作、编码、工具调用和长上下文能力，因此可归入 模型能力 的高关注样本。",
+      "impactAnalysis": "OpenAI 释放出的信号是：AI 竞争正在从单点模型能力，转向模型、产品、资本和生态联动的系统竞赛。",
+      "clusterKey": "model:OpenAI",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "模型能力",
+        "matchedCompanies": [
+          "OpenAI"
+        ],
+        "matchedKeywords": [
+          "openai",
+          "chatgpt",
+          "gpt 5.4",
+          "codex",
+          "发布"
+        ]
+      }
+    },
+    {
+      "id": "insight-anthropic-institute-2026-03-11",
+      "rawNewsId": "anthropic-institute-2026-03-11",
+      "title": "Introducing The Anthropic Institute",
+      "sourceName": "Anthropic",
+      "sourceType": "official",
+      "sourceUrl": "https://www.anthropic.com/news/the-anthropic-institute",
+      "publishedAt": "2026-03-11T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "model_release",
+      "primaryTheme": "model",
+      "secondaryThemes": [
+        "safety"
+      ],
+      "companies": [
+        "Anthropic"
+      ],
+      "keywords": [
+        "anthropic",
+        "发布",
+        "治理"
+      ],
+      "sentimentLabel": "positive",
+      "sentimentScore": 0.48,
+      "impactScore": 91,
+      "confidenceScore": 0.91,
+      "riskTags": [],
+      "opportunityTags": [
+        "多模态应用创新加速"
+      ],
+      "structuredSummary": "Anthropic 相关的 模型发布 事件，核心主题落在“模型能力”。新闻重点是 Anthropic 推出研究机构，聚焦强 AI 带来的社会风险、治理与公共研究供给，因此可归入 模型能力 的高关注样本。",
+      "impactAnalysis": "Anthropic 释放出的信号是：AI 竞争正在从单点模型能力，转向模型、产品、资本和生态联动的系统竞赛。",
+      "clusterKey": "model:Anthropic",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "模型能力",
+        "matchedCompanies": [
+          "Anthropic"
+        ],
+        "matchedKeywords": [
+          "anthropic",
+          "发布",
+          "治理"
+        ]
+      }
+    },
+    {
+      "id": "insight-anthropic-funding-2026-02-12",
+      "rawNewsId": "anthropic-funding-2026-02-12",
+      "title": "Anthropic raises $30 billion in Series G funding at $380 billion post-money valuation",
+      "sourceName": "Anthropic",
+      "sourceType": "official",
+      "sourceUrl": "https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation",
+      "publishedAt": "2026-02-12T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "funding",
+      "primaryTheme": "capital",
+      "secondaryThemes": [
+        "infrastructure",
+        "enterprise"
+      ],
+      "companies": [
+        "Anthropic"
+      ],
+      "keywords": [
+        "anthropic",
+        "基础设施",
+        "算力",
+        "funding",
+        "valuation"
+      ],
+      "sentimentLabel": "positive",
+      "sentimentScore": 0.48,
+      "impactScore": 91,
+      "confidenceScore": 0.93,
+      "riskTags": [
+        "估值抬升过快",
+        "资本回报周期拉长",
+        "高估值带来执行压力"
+      ],
+      "opportunityTags": [
+        "头部厂商扩张窗口打开"
+      ],
+      "structuredSummary": "Anthropic 相关的 融资事件 事件，核心主题落在“资本动向”。新闻重点是 Anthropic 宣布完成 300 亿美元 G 轮融资，估值达到 3800 亿美元，因此可归入 资本动向 的高关注样本。",
+      "impactAnalysis": "Anthropic 相关新闻显示资本市场仍愿意为头部 AI 平台支付高溢价，但同时也会把增长兑现和商业化节奏推到更高压力位。",
+      "clusterKey": "capital:Anthropic",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "资本动向",
+        "matchedCompanies": [
+          "Anthropic"
+        ],
+        "matchedKeywords": [
+          "anthropic",
+          "基础设施",
+          "算力",
+          "funding",
+          "valuation"
+        ]
+      }
+    },
+    {
+      "id": "insight-openai-safety-fellowship-2026-04-06",
+      "rawNewsId": "openai-safety-fellowship-2026-04-06",
+      "title": "Introducing the OpenAI Safety Fellowship",
+      "sourceName": "OpenAI",
+      "sourceType": "official",
+      "sourceUrl": "https://openai.com/index/introducing-openai-safety-fellowship/",
+      "publishedAt": "2026-04-06T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "safety",
+      "primaryTheme": "safety",
+      "secondaryThemes": [],
+      "companies": [
+        "OpenAI"
+      ],
+      "keywords": [
+        "openai",
+        "safety",
+        "治理"
+      ],
+      "sentimentLabel": "positive",
+      "sentimentScore": 0.48,
+      "impactScore": 91,
+      "confidenceScore": 0.91,
+      "riskTags": [
+        "治理要求持续提高"
+      ],
+      "opportunityTags": [
+        "安全评测和合规工具成长"
+      ],
+      "structuredSummary": "OpenAI 相关的 安全治理 事件，核心主题落在“安全治理”。新闻重点是 OpenAI 启动 Safety Fellowship，面向外部研究者开放安全与对齐方向的研究支持，因此可归入 安全治理 的高关注样本。",
+      "impactAnalysis": "OpenAI 把安全研究和外部协作放到更显眼的位置，意味着安全不再只是附属叙事，而是影响产品扩张和政策信任的核心变量。",
+      "clusterKey": "safety:OpenAI",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "安全治理",
+        "matchedCompanies": [
+          "OpenAI"
+        ],
+        "matchedKeywords": [
+          "openai",
+          "safety",
+          "治理"
+        ]
+      }
+    },
+    {
+      "id": "insight-qbitai-aishi-funding-2026-03-12",
+      "rawNewsId": "qbitai-aishi-funding-2026-03-12",
+      "title": "爱诗科技完成3亿美元C轮融资，鼎晖领投，开启“实时交互”视频生成新纪元",
+      "sourceName": "量子位",
+      "sourceType": "media",
+      "sourceUrl": "https://www.qbitai.com/2026/03/386664.html",
+      "publishedAt": "2026-03-12T00:00:00.000Z",
+      "language": "zh",
+      "region": "china",
+      "eventType": "funding",
+      "primaryTheme": "capital",
+      "secondaryThemes": [
+        "world_model"
+      ],
+      "companies": [
+        "爱诗科技",
+        "PixVerse"
+      ],
+      "keywords": [
+        "爱诗科技",
+        "pixverse",
+        "融资",
+        "领投",
+        "世界模型"
+      ],
+      "sentimentLabel": "neutral",
+      "sentimentScore": 0.12,
+      "impactScore": 89,
+      "confidenceScore": 0.8300000000000001,
+      "riskTags": [
+        "估值抬升过快",
+        "资本回报周期拉长",
+        "高估值带来执行压力"
+      ],
+      "opportunityTags": [
+        "头部厂商扩张窗口打开",
+        "世界模型与具身智能新场景"
+      ],
+      "structuredSummary": "爱诗科技、PixVerse 相关的 融资事件 事件，核心主题落在“资本动向”。新闻重点是 量子位报道 AI 视频生成公司爱诗科技完成 3 亿美元 C 轮融资，强调实时交互视频和 API 商业化，因此可归入 资本动向 的高关注样本。",
+      "impactAnalysis": "爱诗科技 相关新闻显示资本市场仍愿意为头部 AI 平台支付高溢价，但同时也会把增长兑现和商业化节奏推到更高压力位。",
+      "clusterKey": "capital:爱诗科技",
+      "reasoning": {
+        "sourceWeight": 18,
+        "themeLabel": "资本动向",
+        "matchedCompanies": [
+          "爱诗科技",
+          "PixVerse"
+        ],
+        "matchedKeywords": [
+          "爱诗科技",
+          "pixverse",
+          "融资",
+          "领投",
+          "世界模型"
+        ]
+      }
+    },
+    {
+      "id": "insight-openai-retire-models-2026-01-29",
+      "rawNewsId": "openai-retire-models-2026-01-29",
+      "title": "Retiring GPT-4o, GPT-4.1, GPT-4.1 mini, and OpenAI o4-mini in ChatGPT",
+      "sourceName": "OpenAI",
+      "sourceType": "official",
+      "sourceUrl": "https://openai.com/index/retiring-gpt-4o-and-older-models/",
+      "publishedAt": "2026-01-29T00:00:00.000Z",
+      "language": "en",
+      "region": "global",
+      "eventType": "ecosystem",
+      "primaryTheme": "model",
+      "secondaryThemes": [
+        "safety"
+      ],
+      "companies": [
+        "OpenAI"
+      ],
+      "keywords": [
+        "openai",
+        "chatgpt",
+        "gpt 4o",
+        "gpt",
+        "治理"
+      ],
+      "sentimentLabel": "watch",
+      "sentimentScore": -0.25,
+      "impactScore": 86,
+      "confidenceScore": 0.93,
+      "riskTags": [
+        "用户迁移成本"
+      ],
+      "opportunityTags": [
+        "多模态应用创新加速"
+      ],
+      "structuredSummary": "OpenAI 相关的 生态变化 事件，核心主题落在“模型能力”。新闻重点是 OpenAI 宣布在 ChatGPT 中退役 GPT-4o 等旧模型，并推动用户迁移到更新模型，因此可归入 模型能力 的高关注样本。",
+      "impactAnalysis": "OpenAI 释放出的信号是：AI 竞争正在从单点模型能力，转向模型、产品、资本和生态联动的系统竞赛。",
+      "clusterKey": "model:OpenAI",
+      "reasoning": {
+        "sourceWeight": 26,
+        "themeLabel": "模型能力",
+        "matchedCompanies": [
+          "OpenAI"
+        ],
+        "matchedKeywords": [
+          "openai",
+          "chatgpt",
+          "gpt 4o",
+          "gpt",
+          "治理"
+        ]
+      }
+    },
+    {
+      "id": "insight-qbitai-shengshu-funding-2026-04-10",
+      "rawNewsId": "qbitai-shengshu-funding-2026-04-10",
+      "title": "生数科技完成近20亿元B轮融资，以通用世界模型定义下一代数字与物理世界生产力底座",
+      "sourceName": "量子位",
+      "sourceType": "media",
+      "sourceUrl": "https://www.qbitai.com/2026/04/398772.html",
+      "publishedAt": "2026-04-10T00:00:00.000Z",
+      "language": "zh",
+      "region": "china",
+      "eventType": "funding",
+      "primaryTheme": "world_model",
+      "secondaryThemes": [
+        "capital"
+      ],
+      "companies": [
+        "生数科技"
+      ],
+      "keywords": [
+        "生数科技",
+        "融资",
+        "世界模型",
+        "具身"
+      ],
+      "sentimentLabel": "neutral",
+      "sentimentScore": 0.12,
+      "impactScore": 82,
+      "confidenceScore": 0.8200000000000001,
+      "riskTags": [
+        "高估值带来执行压力"
+      ],
+      "opportunityTags": [
+        "世界模型与具身智能新场景"
+      ],
+      "structuredSummary": "生数科技 相关的 融资事件 事件，核心主题落在“世界模型”。新闻重点是 量子位报道生数科技完成近 20 亿元 B 轮融资，聚焦世界模型、视频生成与具身智能，因此可归入 世界模型 的高关注样本。",
+      "impactAnalysis": "生数科技 所在赛道正在把视频生成、世界模型和具身能力绑定在一起，说明内容 AI 正向更强交互和物理世界建模延伸。",
+      "clusterKey": "world_model:生数科技",
+      "reasoning": {
+        "sourceWeight": 18,
+        "themeLabel": "世界模型",
+        "matchedCompanies": [
+          "生数科技"
+        ],
+        "matchedKeywords": [
+          "生数科技",
+          "融资",
+          "世界模型",
+          "具身"
+        ]
+      }
+    }
+  ],
+  "methodology": {
+    "schemaDesign": [
+      "把新闻拆成 eventType、primaryTheme、companies、keywords、sentiment、impactScore 等字段，是因为日报必须支持排序、聚合、聚类和可视化，而不是只输出摘要。",
+      "保留 riskTags 与 opportunityTags，是为了把舆情判断直接转化为决策提示，避免报告只有描述没有动作。",
+      "同时记录 confidenceScore，是为了区分官方披露与媒体转述的可信度差异，保证分析可解释。"
+    ],
+    "keyStepReasons": [
+      "先做清洗归一化，再做结构化抽取，可以把不同来源的标题、摘要、发布时间和语言统一到同一个分析口径。",
+      "把热点排序拆成来源权重、主题权重、时效性和实体权重，是为了避免模型或人工凭直觉排序。",
+      "趋势判断基于主题聚合结果生成，而不是直接摘要堆砌，满足题目对逻辑支撑的要求。"
+    ],
+    "developmentPlan": [
+      "阶段 1：补齐前后端骨架、Prisma 数据模型和样本数据。",
+      "阶段 2：用 LangGraph 编排清洗、抽取、评分、日报生成链路。",
+      "阶段 3：实现 Express API、React 可视化看板和种子脚本。",
+      "阶段 4：生成样例日报并补齐说明文档与最小测试。"
+    ],
+    "sourceSelection": [
+      "官方渠道优先选 OpenAI、Anthropic、Google DeepMind，因为它们更适合获取模型发布、融资和安全动作的一手信息。",
+      "媒体渠道补充 TechCrunch 与量子位，用来观察资本市场、行业情绪和中国市场的融资动向。",
+      "样本时间主要落在 2026 年 2 月到 4 月，保证“近期性”和主题集中度。"
+    ]
+  },
+  "promptCatalog": {
+    "extractionPrompt": "你是 AI 舆情结构化抽取器。\n任务：只根据单条新闻内容，输出结构化 JSON，不允许补充原文没有的信息。\n字段必须包含：eventType、primaryTheme、secondaryThemes、companies、keywords、sentimentLabel、impactSummary、riskTags、opportunityTags、confidenceScore。\n规则：\n1. eventType 只允许 funding / model_release / partnership / infrastructure / safety / ecosystem。\n2. primaryTheme 只允许 model / infrastructure / capital / enterprise / safety / open_source / world_model / multimodal / content_ai。\n3. sentimentLabel 只允许 positive / neutral / watch。\n4. 所有数组字段必须去重，最多返回 5 个元素。\n5. 如果信息不足，必须显式返回空数组或较低置信度，不允许猜测。",
+    "reportPrompt": "你是 AI 行业分析师。\n任务：基于多条结构化新闻生成日报，但必须先做聚合，再给结论。\n输出结构：今日热点、深度总结、趋势判断、风险提示、机会提示。\n分析规则：\n1. 热点排序必须由 impactScore、时效性、来源可信度共同决定。\n2. 趋势判断必须引用结构化字段的聚合事实，不能空泛。\n3. 风险与机会必须成对出现，避免单边乐观。\n4. 不允许逐条摘要堆砌，必须合并同类主题后再写。"
+  }
+}
