@@ -60,6 +60,52 @@
   color: rgba(240, 244, 248, 0.82);
 }
 
+.modeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.modeBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.panelWarning {
+  margin: 12px 0 0;
+  color: #ffd7ba;
+  line-height: 1.6;
+}
+
+.refreshButton {
+  margin-top: 18px;
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 18px;
+  background: #f0f4f8;
+  color: #102a43;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.refreshButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.refreshButton:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .metrics,
 .chartGrid,
 .hotGrid,

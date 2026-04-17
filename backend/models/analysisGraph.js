@@ -6,6 +6,7 @@ import { extractInsight, normalizeRawNews } from "../utils/analysis.js";
 const AnalysisState = Annotation.Root({
   reportDate: Annotation(),
   rawItems: Annotation(),
+  ingestion: Annotation(),
   normalizedItems: Annotation(),
   structuredItems: Annotation(),
   report: Annotation()
@@ -21,7 +22,8 @@ const analysisGraph = new StateGraph(AnalysisState)
   .addNode("composeDailyReport", (state) => ({
     report: buildDailyReportPayload({
       reportDate: state.reportDate,
-      structuredItems: state.structuredItems
+      structuredItems: state.structuredItems,
+      ingestion: state.ingestion
     })
   }))
   .addEdge(START, "normalizeRawItems")

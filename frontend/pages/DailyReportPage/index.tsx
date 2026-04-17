@@ -6,7 +6,7 @@ import { MetricCard } from "@/components/MetricCard";
 import { ChartCard } from "@/components/ChartCard";
 import { EventCard } from "@/components/EventCard";
 import { useDashboardData } from "@/hooks/useDashboardData";
-import { formatCardDate, formatImpactScore } from "@/utils/formatters";
+import { formatCardDate, formatDateTimeLabel, formatImpactScore } from "@/utils/formatters";
 import { THEME_FILTERS } from "@/constants/dashboard";
 
 import styles from "./index.module.scss";
@@ -15,6 +15,9 @@ export function DailyReportPage() {
   const { data, loading, error } = useDashboardData();
   const activeTheme = useDashboardStore((state) => state.activeTheme);
   const setActiveTheme = useDashboardStore((state) => state.setActiveTheme);
+  const refreshing = useDashboardStore((state) => state.refreshing);
+  const refreshError = useDashboardStore((state) => state.refreshError);
+  const refreshReport = useDashboardStore((state) => state.refreshReport);
   const [showFullMethodology, setShowFullMethodology] = useState(false);
 
   const filteredInsights = useMemo(() => {
@@ -52,7 +55,27 @@ export function DailyReportPage() {
         <div className={styles.heroPanel}>
           <span className={styles.panelLabel}>报告日期</span>
           <strong className={styles.panelValue}>{data.reportDate}</strong>
-          <p className={styles.panelHint}>自动生成时间：{formatCardDate(data.generatedAt)}</p>
+          <div className={styles.modeRow}>
+            <span className={styles.modeBadge}>
+              {data.ingestion.mode === "live" ? "实时抓取" : "静态样例"}
+            </span>
+            <span className={styles.modeBadge}>{data.ingestion.fetchedCount} 条样本</span>
+          </div>
+          <p className={styles.panelHint}>生成时间：{formatDateTimeLabel(data.generatedAt)}</p>
+          <p className={styles.panelHint}>抓取时间：{formatDateTimeLabel(data.ingestion.refreshedAt)}</p>
+          <p className={styles.panelHint}>本次来源：{data.ingestion.sources.join("、")}</p>
+          {data.ingestion.failedSources.length ? (
+            <p className={styles.panelWarning}>已跳过来源：{data.ingestion.failedSources.join("、")}</p>
+          ) : null}
+          {refreshError ? <p className={styles.panelWarning}>刷新失败：{refreshError}</p> : null}
+          <button
+            className={styles.refreshButton}
+            disabled={refreshing}
+            onClick={() => void refreshReport()}
+            type="button"
+          >
+            {refreshing ? "正在实时生成..." : "实时生成最新舆情"}
+          </button>
         </div>
       </section>
 

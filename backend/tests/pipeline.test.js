@@ -13,6 +13,7 @@ test("analysis graph should produce complete report payload", async () => {
   });
 
   assert.equal(state.report.summary.totalNews, rawItems.length);
+  assert.equal(state.report.ingestion.mode, "seed");
   assert.equal(state.report.hotTopics.length, 5);
   assert.ok(state.report.trendSignals.length >= 3);
   assert.ok(state.report.structuredInsights.every((item) => item.impactScore >= 42));

@@ -29,6 +29,14 @@ export interface AlertItem {
   level: "high" | "medium" | "low";
 }
 
+export interface IngestionMeta {
+  mode: "seed" | "live";
+  sources: string[];
+  failedSources: string[];
+  fetchedCount: number;
+  refreshedAt: string;
+}
+
 export interface StructuredInsightView {
   id: string;
   title: string;
@@ -52,6 +60,14 @@ export interface StructuredInsightView {
   impactAnalysis: string;
 }
 
+export interface ReportMethodology {
+  schemaDesign: string[];
+  keyStepReasons: string[];
+  developmentPlan: string[];
+  sourceSelection: string[];
+  ingestion?: IngestionMeta;
+}
+
 export interface DailyReportPayload {
   reportDate: string;
   generatedAt: string;
@@ -64,6 +80,7 @@ export interface DailyReportPayload {
     highImpactCount: number;
     averageImpactScore: number;
   };
+  ingestion: IngestionMeta;
   hotTopics: HotTopic[];
   deepDives: DeepDive[];
   trendSignals: AlertItem[];
@@ -76,12 +93,7 @@ export interface DailyReportPayload {
     entityDistribution: ChartDatum[];
   };
   structuredInsights: StructuredInsightView[];
-  methodology: {
-    schemaDesign: string[];
-    keyStepReasons: string[];
-    developmentPlan: string[];
-    sourceSelection: string[];
-  };
+  methodology: ReportMethodology;
   promptCatalog: {
     extractionPrompt: string;
     reportPrompt: string;

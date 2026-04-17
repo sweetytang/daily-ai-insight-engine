@@ -1,4 +1,4 @@
-import { getLatestReportPayload } from "../services/reportService.js";
+import { getLatestReportPayload, refreshLatestReportPayload } from "../services/reportService.js";
 
 export async function getHealth(request, response) {
   return response.json({
@@ -9,4 +9,9 @@ export async function getHealth(request, response) {
 export async function getLatestReport(request, response) {
   const reportPayload = await getLatestReportPayload();
   return response.json(reportPayload);
+}
+
+export async function refreshLatestReport(request, response) {
+  const { payload } = await refreshLatestReportPayload();
+  return response.json(payload);
 }

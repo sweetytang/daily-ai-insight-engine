@@ -2,7 +2,7 @@ import {
   SOURCE_TYPE_LABELS,
   THEME_LABELS
 } from "../../common/constants/analysis.js";
-import { groupCount, sumBy } from "../../common/utils/report.js";
+import { groupCount, sumBy, uniqueItems } from "../../common/utils/report.js";
 import { extractionPrompt, reportPrompt } from "../models/promptTemplates.js";
 
 function buildChartData(counter, labels, scoreMap = {}) {
@@ -176,7 +176,17 @@ function buildOpportunityAlerts(themeCount) {
   return alerts.slice(0, 4);
 }
 
-export function buildDailyReportPayload({ reportDate, structuredItems }) {
+function buildIngestionSnapshot(ingestion, fallbackCount) {
+  return {
+    mode: ingestion?.mode === "live" ? "live" : "seed",
+    sources: uniqueItems(ingestion?.sources ?? ["本地样例数据"]),
+    failedSources: uniqueItems(ingestion?.failedSources ?? []),
+    fetchedCount: ingestion?.fetchedCount ?? fallbackCount,
+    refreshedAt: ingestion?.refreshedAt ?? new Date().toISOString()
+  };
+}
+
+export function buildDailyReportPayload({ reportDate, structuredItems, ingestion }) {
   const sortedItems = [...structuredItems].sort((left, right) => right.impactScore - left.impactScore);
   const sourceCount = groupCount(sortedItems, (item) => item.sourceType);
   const themeCount = groupCount(sortedItems, (item) => item.primaryTheme);
@@ -191,6 +201,7 @@ export function buildDailyReportPayload({ reportDate, structuredItems }) {
     .map(([theme]) => THEME_LABELS[theme] ?? theme);
   const averageImpactScore = Math.round(sumBy(sortedItems, (item) => item.impactScore) / Math.max(sortedItems.length, 1));
   const highImpactCount = sortedItems.filter((item) => item.impactScore >= 78).length;
+  const ingestionSnapshot = buildIngestionSnapshot(ingestion, sortedItems.length);
 
   return {
     reportDate,
@@ -204,6 +215,7 @@ export function buildDailyReportPayload({ reportDate, structuredItems }) {
       highImpactCount,
       averageImpactScore
     },
+    ingestion: ingestionSnapshot,
     hotTopics: buildHotTopics(sortedItems),
     deepDives: buildDeepDives(sortedItems),
     trendSignals: buildTrendSignals(themeCount, themeScoreMap),
@@ -238,10 +250,14 @@ export function buildDailyReportPayload({ reportDate, structuredItems }) {
         "阶段 4：生成样例日报并补齐说明文档与最小测试。"
       ],
       sourceSelection: [
+        ingestionSnapshot.mode === "live"
+          ? `实时模式当前优先抓取 ${ingestionSnapshot.sources.join("、")}，原因是这两类官方源结构稳定、可直接服务端抓取。`
+          : "默认模式继续保留本地样例数据，方便离线演示和测试。",
         "官方渠道优先选 OpenAI、Anthropic、Google DeepMind，因为它们更适合获取模型发布、融资和安全动作的一手信息。",
         "媒体渠道补充 TechCrunch 与量子位，用来观察资本市场、行业情绪和中国市场的融资动向。",
         "样本时间主要落在 2026 年 2 月到 4 月，保证“近期性”和主题集中度。"
-      ]
+      ],
+      ingestion: ingestionSnapshot
     },
     promptCatalog: {
       extractionPrompt,
