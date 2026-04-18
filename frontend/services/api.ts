@@ -1,4 +1,5 @@
 import type { DailyReportPayload } from "@/types/dashboard";
+import type { ReportSolution } from "@/types/dashboard";
 
 async function buildRequestError(response: Response, fallbackMessage: string) {
   try {
@@ -13,8 +14,16 @@ async function buildRequestError(response: Response, fallbackMessage: string) {
   }
 }
 
-export async function fetchLatestReport() {
-  const response = await fetch("/api/report/latest");
+function createReportUrl(pathname: string, solution: ReportSolution) {
+  const searchParams = new URLSearchParams({
+    solution
+  });
+
+  return `${pathname}?${searchParams.toString()}`;
+}
+
+export async function fetchLatestReport(solution: ReportSolution) {
+  const response = await fetch(createReportUrl("/api/report/latest", solution));
 
   if (!response.ok) {
     throw new Error(await buildRequestError(response, "日报数据加载失败"));
@@ -23,8 +32,8 @@ export async function fetchLatestReport() {
   return (await response.json()) as DailyReportPayload;
 }
 
-export async function refreshLatestReport() {
-  const response = await fetch("/api/report/refresh", {
+export async function refreshLatestReport(solution: ReportSolution) {
+  const response = await fetch(createReportUrl("/api/report/refresh", solution), {
     method: "POST"
   });
 

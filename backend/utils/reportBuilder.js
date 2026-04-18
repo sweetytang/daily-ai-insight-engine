@@ -2,6 +2,12 @@ import {
   SOURCE_TYPE_LABELS,
   THEME_LABELS
 } from "../../common/constants/analysis.js";
+import {
+  DEFAULT_REPORT_SOLUTION,
+  getReportSolutionLabel,
+  isLlmSolution,
+  normalizeReportSolution
+} from "../../common/constants/solution.js";
 import { groupCount, sumBy, uniqueItems } from "../../common/utils/report.js";
 import { extractionPrompt, reportPrompt } from "../models/promptTemplates.js";
 
@@ -186,7 +192,14 @@ function buildIngestionSnapshot(ingestion, fallbackCount) {
   };
 }
 
-export function buildDailyReportPayload({ reportDate, structuredItems, ingestion }) {
+export function buildDailyReportPayload({
+  reportDate,
+  structuredItems,
+  ingestion,
+  solution = DEFAULT_REPORT_SOLUTION,
+  promptExecutionMode = isLlmSolution(solution) ? "runtime" : "design_only"
+}) {
+  const normalizedSolution = normalizeReportSolution(solution);
   const sortedItems = [...structuredItems].sort((left, right) => right.impactScore - left.impactScore);
   const sourceCount = groupCount(sortedItems, (item) => item.sourceType);
   const themeCount = groupCount(sortedItems, (item) => item.primaryTheme);
@@ -204,6 +217,8 @@ export function buildDailyReportPayload({ reportDate, structuredItems, ingestion
   const ingestionSnapshot = buildIngestionSnapshot(ingestion, sortedItems.length);
 
   return {
+    solution: normalizedSolution,
+    solutionLabel: getReportSolutionLabel(normalizedSolution),
     reportDate,
     generatedAt: new Date().toISOString(),
     title: `AI 舆情分析日报 - ${reportDate}`,
@@ -241,13 +256,17 @@ export function buildDailyReportPayload({ reportDate, structuredItems, ingestion
       keyStepReasons: [
         "先做清洗归一化，再做结构化抽取，可以把不同来源的标题、摘要、发布时间和语言统一到同一个分析口径。",
         "把热点排序拆成来源权重、主题权重、时效性和实体权重，是为了避免模型或人工凭直觉排序。",
-        "趋势判断基于主题聚合结果生成，而不是直接摘要堆砌，满足题目对逻辑支撑的要求。"
+        "趋势判断基于主题聚合结果生成，而不是直接摘要堆砌，满足题目对逻辑支撑的要求。",
+        isLlmSolution(normalizedSolution)
+          ? "方案 B 让 Prompt 真正参与“结构化抽取 + 日报生成”，但影响分、排序和图表仍保持规则可解释。"
+          : "方案 A 保持规则链路，优势是稳定、可解释，也方便和方案 B 做同口径对比。"
       ],
       developmentPlan: [
         "阶段 1：补齐前后端骨架、Prisma 数据模型和样本数据。",
         "阶段 2：用 LangGraph 编排清洗、抽取、评分、日报生成链路。",
         "阶段 3：实现 Express API、React 可视化看板和种子脚本。",
-        "阶段 4：生成样例日报并补齐说明文档与最小测试。"
+        "阶段 4：生成样例日报并补齐说明文档与最小测试。",
+        "阶段 5：保留规则版方案 A，再增加真实调用大模型的方案 B，通过 URL 参数切换。"
       ],
       sourceSelection: [
         ingestionSnapshot.mode === "live"
@@ -257,11 +276,13 @@ export function buildDailyReportPayload({ reportDate, structuredItems, ingestion
         "媒体渠道补充 TechCrunch 与量子位，用来观察资本市场、行业情绪和中国市场的融资动向。",
         "样本时间主要落在 2026 年 2 月到 4 月，保证“近期性”和主题集中度。"
       ],
-      ingestion: ingestionSnapshot
+      ingestion: ingestionSnapshot,
+      solution: normalizedSolution
     },
     promptCatalog: {
       extractionPrompt,
-      reportPrompt
+      reportPrompt,
+      executionMode: promptExecutionMode
     }
   };
 }

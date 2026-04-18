@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 import { fetchLatestReport, refreshLatestReport } from "@/services/api";
 
-import type { DailyReportPayload } from "@/types/dashboard";
+import type { DailyReportPayload, ReportSolution } from "@/types/dashboard";
 
 interface DashboardState {
   data: DailyReportPayload | null;
@@ -12,8 +12,8 @@ interface DashboardState {
   refreshError: string | null;
   activeTheme: string;
   setActiveTheme: (theme: string) => void;
-  loadReport: () => Promise<void>;
-  refreshReport: () => Promise<void>;
+  loadReport: (solution: ReportSolution) => Promise<void>;
+  refreshReport: (solution: ReportSolution) => Promise<void>;
 }
 
 export const useDashboardStore = create<DashboardState>((set) => ({
@@ -24,11 +24,11 @@ export const useDashboardStore = create<DashboardState>((set) => ({
   refreshError: null,
   activeTheme: "all",
   setActiveTheme: (theme) => set({ activeTheme: theme }),
-  loadReport: async () => {
+  loadReport: async (solution) => {
     set({ loading: true, error: null, refreshError: null });
 
     try {
-      const data = await fetchLatestReport();
+      const data = await fetchLatestReport(solution);
       set({ data, loading: false });
     } catch (error) {
       set({
@@ -37,11 +37,11 @@ export const useDashboardStore = create<DashboardState>((set) => ({
       });
     }
   },
-  refreshReport: async () => {
+  refreshReport: async (solution) => {
     set({ refreshing: true, refreshError: null });
 
     try {
-      const data = await refreshLatestReport();
+      const data = await refreshLatestReport(solution);
       set({
         data,
         refreshing: false,

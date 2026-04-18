@@ -1,18 +1,20 @@
 import { useMemo, useState } from "react";
 
 import { useDashboardStore } from "@/store/dashboardStore";
-import { SectionBlock } from "@/components/SectionBlock";
-import { MetricCard } from "@/components/MetricCard";
 import { ChartCard } from "@/components/ChartCard";
 import { EventCard } from "@/components/EventCard";
+import { MetricCard } from "@/components/MetricCard";
+import { SectionBlock } from "@/components/SectionBlock";
 import { useDashboardData } from "@/hooks/useDashboardData";
+import { useReportSolution } from "@/hooks/useReportSolution";
 import { formatCardDate, formatDateTimeLabel, formatImpactScore } from "@/utils/formatters";
 import { THEME_FILTERS } from "@/constants/dashboard";
 
 import styles from "./index.module.scss";
 
 export function DailyReportPage() {
-  const { data, loading, error } = useDashboardData();
+  const { solution, solutionOptions } = useReportSolution();
+  const { data, loading, error } = useDashboardData(solution);
   const activeTheme = useDashboardStore((state) => state.activeTheme);
   const setActiveTheme = useDashboardStore((state) => state.setActiveTheme);
   const refreshing = useDashboardStore((state) => state.refreshing);
@@ -56,10 +58,22 @@ export function DailyReportPage() {
           <span className={styles.panelLabel}>报告日期</span>
           <strong className={styles.panelValue}>{data.reportDate}</strong>
           <div className={styles.modeRow}>
+            <span className={styles.modeBadge}>{data.solutionLabel}</span>
             <span className={styles.modeBadge}>
               {data.ingestion.mode === "live" ? "实时抓取" : "静态样例"}
             </span>
             <span className={styles.modeBadge}>{data.ingestion.fetchedCount} 条样本</span>
+          </div>
+          <div className={styles.solutionRow}>
+            {solutionOptions.map((item) => (
+              <a
+                className={`${styles.solutionLink} ${data.solution === item.key ? styles.activeSolutionLink : ""}`}
+                href={item.href}
+                key={item.key}
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
           <p className={styles.panelHint}>生成时间：{formatDateTimeLabel(data.generatedAt)}</p>
           <p className={styles.panelHint}>抓取时间：{formatDateTimeLabel(data.ingestion.refreshedAt)}</p>
@@ -71,7 +85,7 @@ export function DailyReportPage() {
           <button
             className={styles.refreshButton}
             disabled={refreshing}
-            onClick={() => void refreshReport()}
+            onClick={() => void refreshReport(solution)}
             type="button"
           >
             {refreshing ? "正在实时生成..." : "实时生成最新舆情"}
@@ -260,6 +274,11 @@ export function DailyReportPage() {
           </article>
           <article className={styles.noteCard}>
             <h3>Prompt 设计</h3>
+            <p className={styles.promptHint}>
+              {data.promptCatalog.executionMode === "runtime"
+                ? "当前方案会在运行时真实调用这两段 Prompt。"
+                : "当前方案只展示 Prompt 设计，不会真实调用大模型。"}
+            </p>
             <p>{data.promptCatalog.extractionPrompt}</p>
             <p>{data.promptCatalog.reportPrompt}</p>
           </article>

@@ -4,5 +4,6 @@ export type {
   DailyReportPayload,
   DeepDive,
   HotTopic,
+  ReportSolution,
   StructuredInsightView
 } from "@common/types/report";

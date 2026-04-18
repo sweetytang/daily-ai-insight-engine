@@ -1,6 +1,13 @@
 import { prisma } from "../config/database.js";
 import { DEFAULT_REPORT_DATE } from "../../common/constants/analysis.js";
+import {
+  DEFAULT_REPORT_SOLUTION,
+  getReportSolutionLabel,
+  normalizeReportSolution
+} from "../../common/constants/solution.js";
 import { analysisGraph } from "../models/analysisGraph.js";
+import { llmAnalysisGraph } from "../models/llmAnalysisGraph.js";
+import { extractionPrompt, reportPrompt } from "../models/promptTemplates.js";
 import { loadSeedNews, writeGeneratedReport } from "./datasetService.js";
 import { buildSeedIngestion, fetchLiveNewsItems } from "./fetchers/index.js";
 
@@ -28,7 +35,7 @@ function serializeMethodology(methodology) {
     return null;
   }
 
-  const { ingestion, ...rest } = methodology;
+  const { ingestion, solution, ...rest } = methodology;
   return rest;
 }
 
@@ -42,8 +49,11 @@ function normalizePayloadForResponse(payload) {
 function serializeReportRecord(record) {
   const generatedAt = record.updatedAt.toISOString();
   const ingestion = record.methodology?.ingestion ?? createFallbackIngestion(record.summary, generatedAt);
+  const solution = normalizeReportSolution(record.methodology?.solution ?? DEFAULT_REPORT_SOLUTION);
 
   return {
+    solution,
+    solutionLabel: getReportSolutionLabel(solution),
     reportDate: record.reportDate,
     generatedAt,
     title: record.title,
@@ -57,7 +67,11 @@ function serializeReportRecord(record) {
     opportunityAlerts: record.opportunityAlerts,
     charts: record.chartPayload,
     methodology: serializeMethodology(record.methodology),
-    promptCatalog: record.promptCatalog
+    promptCatalog: {
+      extractionPrompt: record.promptCatalog?.extractionPrompt ?? extractionPrompt,
+      reportPrompt: record.promptCatalog?.reportPrompt ?? reportPrompt,
+      executionMode: record.promptCatalog?.executionMode ?? (solution === "b" ? "runtime" : "design_only")
+    }
   };
 }
 
@@ -77,8 +91,13 @@ function mergePayload(reportRecord, insights) {
   };
 }
 
-async function buildReportPayload(reportDate, sourceSnapshot) {
-  const state = await analysisGraph.invoke({
+function getAnalysisGraph(solution) {
+  return normalizeReportSolution(solution) === "b" ? llmAnalysisGraph : analysisGraph;
+}
+
+async function buildReportPayload(reportDate, sourceSnapshot, solution = DEFAULT_REPORT_SOLUTION) {
+  const normalizedSolution = normalizeReportSolution(solution);
+  const state = await getAnalysisGraph(normalizedSolution).invoke({
     reportDate,
     rawItems: sourceSnapshot.rawItems,
     ingestion: sourceSnapshot.ingestion
@@ -87,12 +106,40 @@ async function buildReportPayload(reportDate, sourceSnapshot) {
   return state.report;
 }
 
-export async function generateReportPayload(reportDate = DEFAULT_REPORT_DATE) {
-  return buildReportPayload(reportDate, createSeedSourceSnapshot());
+async function loadPersistedSourceSnapshot(reportRecord) {
+  const rawItems = await prisma.rawNews.findMany({
+    orderBy: {
+      publishedAt: "desc"
+    }
+  });
+
+  if (!rawItems.length) {
+    return null;
+  }
+
+  return {
+    rawItems: rawItems.map((item) => ({
+      ...item,
+      publishedAt: item.publishedAt.toISOString()
+    })),
+    ingestion: reportRecord?.methodology?.ingestion ?? buildSeedIngestion(rawItems)
+  };
 }
 
-export async function persistReportPayload(reportDate = DEFAULT_REPORT_DATE, sourceSnapshot = createSeedSourceSnapshot()) {
-  const payload = await buildReportPayload(reportDate, sourceSnapshot);
+export async function generateReportPayload(
+  reportDate = DEFAULT_REPORT_DATE,
+  solution = DEFAULT_REPORT_SOLUTION
+) {
+  return buildReportPayload(reportDate, createSeedSourceSnapshot(), solution);
+}
+
+export async function persistReportPayload(
+  reportDate = DEFAULT_REPORT_DATE,
+  sourceSnapshot = createSeedSourceSnapshot(),
+  solution = DEFAULT_REPORT_SOLUTION
+) {
+  const normalizedSolution = normalizeReportSolution(solution);
+  const payload = await buildReportPayload(reportDate, sourceSnapshot, normalizedSolution);
   const rawItems = sourceSnapshot.rawItems;
 
   await prisma.$transaction(async (transaction) => {
@@ -181,18 +228,37 @@ export async function persistReportPayload(reportDate = DEFAULT_REPORT_DATE, sou
   };
 }
 
-export async function refreshLatestReportPayload(reportDate = DEFAULT_REPORT_DATE) {
+export async function refreshLatestReportPayload(
+  reportDate = DEFAULT_REPORT_DATE,
+  solution = DEFAULT_REPORT_SOLUTION
+) {
   const sourceSnapshot = await fetchLiveNewsItems();
-  return persistReportPayload(reportDate, sourceSnapshot);
+  return persistReportPayload(reportDate, sourceSnapshot, solution);
 }
 
-export async function getLatestReportPayload(reportDate = DEFAULT_REPORT_DATE) {
+export async function getLatestReportPayload(
+  reportDate = DEFAULT_REPORT_DATE,
+  solution = DEFAULT_REPORT_SOLUTION
+) {
+  const normalizedSolution = normalizeReportSolution(solution);
   const reportRecord = await prisma.dailyReport.findUnique({
     where: { reportDate }
   });
 
   if (!reportRecord) {
-    const { payload } = await persistReportPayload(reportDate);
+    const { payload } = await persistReportPayload(reportDate, createSeedSourceSnapshot(), normalizedSolution);
+    return payload;
+  }
+
+  const storedSolution = normalizeReportSolution(reportRecord.methodology?.solution ?? DEFAULT_REPORT_SOLUTION);
+
+  if (storedSolution !== normalizedSolution) {
+    const persistedSourceSnapshot = await loadPersistedSourceSnapshot(reportRecord);
+    const { payload } = await persistReportPayload(
+      reportDate,
+      persistedSourceSnapshot ?? createSeedSourceSnapshot(),
+      normalizedSolution
+    );
     return payload;
   }
 

@@ -20,9 +20,43 @@ const eventTypeRules = {
 
 const negativeSignals = ["skepticism", "second thoughts", "retiring", "risk", "pressure", "挑战", "波动"];
 const positiveSignals = ["introducing", "launch", "raises", "growth", "发布", "完成融资", "上线", "expands"];
+const validThemes = new Set(Object.keys(THEME_KEYWORDS));
+const validEventTypes = new Set(Object.keys(eventTypeRules));
+const validSentimentLabels = new Set(["positive", "neutral", "watch"]);
+
+export const SENTIMENT_SCORE_BY_LABEL = {
+  positive: 0.48,
+  neutral: 0.12,
+  watch: -0.25
+};
 
 function countMatches(text, keywords) {
   return keywords.reduce((total, keyword) => total + (text.includes(keyword) ? 1 : 0), 0);
+}
+
+function collectTextFragments(value) {
+  if (typeof value === "string") {
+    const normalized = value.trim();
+    return normalized ? [normalized] : [];
+  }
+
+  if (Array.isArray(value)) {
+    return value.flatMap(collectTextFragments);
+  }
+
+  if (value && typeof value === "object") {
+    return Object.values(value).flatMap(collectTextFragments);
+  }
+
+  return [];
+}
+
+function normalizeStringArray(value, limit) {
+  return uniqueItems(collectTextFragments(value)).slice(0, limit);
+}
+
+function normalizeTextValue(value) {
+  return collectTextFragments(value).join("；");
 }
 
 export function normalizeRawNews(item) {
@@ -91,8 +125,20 @@ export function detectSentiment(text, sourceType) {
 
   return {
     sentimentLabel: "neutral",
-    sentimentScore: 0.12
+    sentimentScore: SENTIMENT_SCORE_BY_LABEL.neutral
   };
+}
+
+export function normalizeTheme(value) {
+  return validThemes.has(value) ? value : "model";
+}
+
+export function normalizeEventType(value) {
+  return validEventTypes.has(value) ? value : "ecosystem";
+}
+
+export function normalizeSentimentLabel(value) {
+  return validSentimentLabels.has(value) ? value : "neutral";
 }
 
 export function buildRiskTags(primaryTheme, eventType, text) {
@@ -216,26 +262,22 @@ export function buildImpactAnalysis(item, metadata) {
   return `${primaryCompany} 释放出的信号是：AI 竞争正在从单点模型能力，转向模型、产品、资本和生态联动的系统竞赛。`;
 }
 
-export function extractInsight(item, reportDate) {
+export function buildInsightFromMetadata(item, reportDate, metadataInput, options = {}) {
   const searchableText = item.searchableText;
-  const companies = detectCompanies(searchableText);
-  const { primaryTheme, secondaryThemes } = detectTheme(searchableText);
-  const eventType = detectEventType(searchableText);
-  const { sentimentLabel, sentimentScore } = detectSentiment(searchableText, item.sourceType);
-  const keywords = uniqueItems(
-    [
-      ...Object.values(COMPANY_KEYWORDS)
-        .flat()
-        .filter((keyword) => searchableText.includes(keyword)),
-      ...Object.values(THEME_KEYWORDS)
-        .flat()
-        .filter((keyword) => searchableText.includes(keyword))
-    ].map((keyword) => keyword.replace(/-/g, " "))
-  ).slice(0, 5);
+  const eventType = normalizeEventType(metadataInput.eventType);
+  const primaryTheme = normalizeTheme(metadataInput.primaryTheme);
+  const secondaryThemes = normalizeStringArray(metadataInput.secondaryThemes, 3)
+    .map(normalizeTheme)
+    .filter((theme) => theme !== primaryTheme)
+    .slice(0, 3);
+  const companies = normalizeStringArray(metadataInput.companies, 5);
+  const keywords = normalizeStringArray(metadataInput.keywords, 5);
+  const sentimentLabel = normalizeSentimentLabel(metadataInput.sentimentLabel);
+  const sentimentScore = SENTIMENT_SCORE_BY_LABEL[sentimentLabel];
   const impactScore = calculateImpactScore(item, primaryTheme, companies, eventType, reportDate);
-  const confidenceScore = clamp((item.sourceType === "official" ? 0.88 : 0.78) + keywords.length * 0.01, 0.7, 0.95);
-  const riskTags = buildRiskTags(primaryTheme, eventType, searchableText);
-  const opportunityTags = buildOpportunityTags(primaryTheme, eventType, searchableText);
+  const confidenceScore = clamp(metadataInput.confidenceScore ?? 0.82, 0.7, 0.95);
+  const riskTags = normalizeStringArray(metadataInput.riskTags, 4);
+  const opportunityTags = normalizeStringArray(metadataInput.opportunityTags, 4);
   const metadata = {
     eventType,
     primaryTheme,
@@ -246,8 +288,10 @@ export function extractInsight(item, reportDate) {
     sentimentScore,
     impactScore,
     confidenceScore,
-    riskTags,
-    opportunityTags
+    riskTags: riskTags.length ? riskTags : buildRiskTags(primaryTheme, eventType, searchableText),
+    opportunityTags: opportunityTags.length
+      ? opportunityTags
+      : buildOpportunityTags(primaryTheme, eventType, searchableText)
   };
 
   return {
@@ -269,16 +313,54 @@ export function extractInsight(item, reportDate) {
     sentimentScore,
     impactScore,
     confidenceScore,
-    riskTags,
-    opportunityTags,
-    structuredSummary: buildStructuredSummary(item, metadata),
-    impactAnalysis: buildImpactAnalysis(item, metadata),
+    riskTags: metadata.riskTags,
+    opportunityTags: metadata.opportunityTags,
+    structuredSummary: normalizeTextValue(metadataInput.structuredSummary) || buildStructuredSummary(item, metadata),
+    impactAnalysis: normalizeTextValue(metadataInput.impactAnalysis) || buildImpactAnalysis(item, metadata),
     clusterKey: `${primaryTheme}:${companies[0] ?? item.sourceName}`,
     reasoning: {
       sourceWeight: SOURCE_WEIGHTS[item.sourceType] ?? 12,
       themeLabel: THEME_LABELS[primaryTheme] ?? primaryTheme,
       matchedCompanies: companies,
-      matchedKeywords: keywords
+      matchedKeywords: keywords,
+      analysisMode: options.analysisMode ?? "rules"
     }
   };
+}
+
+export function extractInsight(item, reportDate) {
+  const searchableText = item.searchableText;
+  const companies = detectCompanies(searchableText);
+  const { primaryTheme, secondaryThemes } = detectTheme(searchableText);
+  const eventType = detectEventType(searchableText);
+  const { sentimentLabel } = detectSentiment(searchableText, item.sourceType);
+  const keywords = uniqueItems(
+    [
+      ...Object.values(COMPANY_KEYWORDS)
+        .flat()
+        .filter((keyword) => searchableText.includes(keyword)),
+      ...Object.values(THEME_KEYWORDS)
+        .flat()
+        .filter((keyword) => searchableText.includes(keyword))
+    ].map((keyword) => keyword.replace(/-/g, " "))
+  ).slice(0, 5);
+
+  return buildInsightFromMetadata(
+    item,
+    reportDate,
+    {
+      eventType,
+      primaryTheme,
+      secondaryThemes,
+      companies,
+      keywords,
+      sentimentLabel,
+      confidenceScore: (item.sourceType === "official" ? 0.88 : 0.78) + keywords.length * 0.01,
+      riskTags: buildRiskTags(primaryTheme, eventType, searchableText),
+      opportunityTags: buildOpportunityTags(primaryTheme, eventType, searchableText)
+    },
+    {
+      analysisMode: "rules"
+    }
+  );
 }

@@ -67,6 +67,13 @@
   margin-top: 16px;
 }
 
+.solutionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
 .modeBadge {
   display: inline-flex;
   align-items: center;
@@ -76,6 +83,30 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
+}
+
+.solutionLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f0f4f8;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.solutionLink:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.activeSolutionLink {
+  background: #f0f4f8;
+  color: #102a43;
 }
 
 .panelWarning {
@@ -241,6 +272,11 @@
   background: transparent;
   color: #0f766e;
   font-weight: 700;
+}
+
+.promptHint {
+  font-weight: 700;
+  color: #0f766e;
 }
 
 .state {

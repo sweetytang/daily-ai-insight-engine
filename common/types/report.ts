@@ -4,6 +4,8 @@ export interface ChartDatum {
   tone?: "positive" | "neutral" | "warning" | "danger";
 }
 
+export type ReportSolution = "a" | "b";
+
 export interface HotTopic {
   id: string;
   title: string;
@@ -69,6 +71,8 @@ export interface ReportMethodology {
 }
 
 export interface DailyReportPayload {
+  solution: ReportSolution;
+  solutionLabel: string;
   reportDate: string;
   generatedAt: string;
   title: string;
@@ -97,5 +101,6 @@ export interface DailyReportPayload {
   promptCatalog: {
     extractionPrompt: string;
     reportPrompt: string;
+    executionMode: "design_only" | "runtime";
   };
 }
